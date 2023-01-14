@@ -4,31 +4,23 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    Rigidbody2D pl;
-    int wholeNumber = 16;
-    float decimalNumber = 4.54f;
-    string text = "AAAAAAAA";
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        float dirx = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirx * 5f, rb.velocity.y);
+
+        if (Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 4f, 0);
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(4f, 0, 0);
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(-4f, 0, 0);
+            rb.velocity = new Vector2(rb.velocity.x, 9f);
         }
     }
 }
