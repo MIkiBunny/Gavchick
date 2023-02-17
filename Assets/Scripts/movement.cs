@@ -5,6 +5,7 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class movement : MonoBehaviour
     {
         float dirx = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirx * 5f, rb.velocity.y);
+
 
         if (Input.GetButtonDown("Jump"))
         {
